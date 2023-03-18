@@ -17,7 +17,7 @@ export const Weather = () => {
   const [loading, setLoading] = useState(false);
   const [hideSearch, setHideSearch] = useState(false);
   const [showResult, setShowResult] = useState(false);
-  const [showError, setShowError] = useState(true);
+  const [Error404, setError404] = useState(true);
   
   const getWeather = async (e) => {
     e.preventDefault();
@@ -32,10 +32,10 @@ export const Weather = () => {
       setLoading(true);
       setShowResult(false);
       setCity("");
-      setShowError(true)
+      setError404(true)
     } catch (err) {
       setHideSearch(true)
-      setShowError(false)
+      setError404(false)
     }
   };
 
@@ -43,7 +43,7 @@ export const Weather = () => {
   const resetValues = () => {
     setHideSearch(false);
     setShowResult(true);
-    setShowError(true);
+    setError404(true);
   }
 
   function selectImg(sky) {
@@ -116,7 +116,7 @@ export const Weather = () => {
             </div>
           </div>
         </>
-      ) : !showError && (<div className="img-error"><img className="sky_img" src="https://i.imgur.com/NNLjUId.png" alt="weather-img" /></div>)}
+      ) : !Error404 && (<div className="img-error"><img className="sky_img" src="https://i.imgur.com/NNLjUId.png" alt="weather-img" /></div>)}
     </>
   );
 };
